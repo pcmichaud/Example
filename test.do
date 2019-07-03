@@ -4,6 +4,7 @@ set more off
 
 cd ~/cedia/example
 
+* we did this on beluga
 set obs 1000
 
 gen age = floor(runiform()*100)
