@@ -2,7 +2,7 @@ capture log close
 clear all
 set more off
 
-cd ~/cedia/emetrics/stata-tables
+cd ~/cedia/example
 
 set obs 1000
 
