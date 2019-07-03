@@ -4,11 +4,11 @@ set more off
 
 cd ~/cedia/emetrics/stata-tables
 
-set obs 10000
+set obs 1000
 
 gen age = floor(runiform()*100)
 gen male = runiform()<0.5
-gen income = exp(log(34e3) + log(5)*rnormal() - 0.5*log(5)^2)
+gen income = 100e3*runiform()
 
 global vlist "age male income"
 global labnames "Age Gender "Household Income""
@@ -48,5 +48,11 @@ eststo male: reg income age if male==1
 esttab female male using reg.tex, se ar2 nonumbers nonotes mtitle("female" "male") replace
 
 
+* a graph
+#d ;
+twoway (scatter income age if male==0) (scatter income age if male==1), 
+	legend(label(1 "female") label(2 "male")) ;
+#d cr
+graph export test.png, as(png) replace
 
 
